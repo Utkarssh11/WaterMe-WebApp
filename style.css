@@ -1,0 +1,170 @@
+:root {
+  --color-bg: #ddf4fd;
+  --color-bg-alt: #f9f9f9;
+  --color-text: #222;
+  --color-accent: #00855f;
+  --color-card: #fff;
+  --color-border: #d0d7e1;
+  --color-glow: #4caf9366;
+  --transition: 0.3s cubic-bezier(.4,0,.2,1);
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  transition: background var(--transition), color var(--transition);
+}
+#bg-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  display: block;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem 1rem 2rem;
+  background: var(--color-bg-alt);
+  border-bottom: 1px solid var(--color-border);
+  position: relative;
+  z-index: 2;
+}
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: 0.02em;
+}
+main {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+#plant-form-section, #plant-list-section {
+  background: var(--color-card);
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 12px 0 #0001;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  border: 1px solid var(--color-border);
+  min-width: 0;
+  transition: background var(--transition), border var(--transition);
+}
+#plant-form-section h2, #plant-list-section h2 {
+  margin-top: 0;
+  font-size: 1.3rem;
+  letter-spacing: 0.01em;
+}
+#plant-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+#plant-form label {
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+}
+#plant-form input {
+  padding: 0.5rem 0.8rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  background: var(--color-bg-alt);
+  color: var(--color-text);
+  transition: border var(--transition), background var(--transition);
+}
+#plant-form input:focus {
+  border-color: var(--color-accent);
+  outline: none;
+}
+#plant-form button {
+  margin-top: 0.5rem;
+  padding: 0.7rem 1.2rem;
+  background: var(--color-accent);
+  color: #fff;
+  border: none;
+  border-radius: 0.7rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px 0 var(--color-glow);
+  transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+#plant-form button:hover, #plant-form button:focus {
+  background: #388e6c;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 4px 16px 0 var(--color-glow);
+}
+#plant-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+.plant-card {
+  background: var(--color-bg-alt);
+  border-radius: 1rem;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 1px 6px 0 #0001;
+  padding: 1.2rem 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: border var(--transition), box-shadow var(--transition), background var(--transition);
+}
+@media (max-width: 900px) {
+  main {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+}
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 1rem 0.5rem 1rem;
+  }
+  main {
+    margin: 1rem auto;
+    padding: 0 0.2rem;
+  }
+  #plant-form-section, #plant-list-section {
+    padding: 1.2rem 0.7rem 1rem 0.7rem;
+  }
+}
+#plant-form input, #plant-form button {
+  transition: box-shadow var(--transition), border var(--transition), background var(--transition), color var(--transition), transform var(--transition);
+}
+#plant-form button, .plant-card button {
+  position: static;
+  overflow: visible;
+}
+.plant-card button:active::after, #plant-form button:active::after {
+  content: none;
+}
+@keyframes ripple {}
+.plant-card {
+  cursor: default;
+}
+.plant-card:hover, .plant-card:focus-within {
+  box-shadow: 0 1px 6px 0 #0001;
+  border-color: var(--color-border);
+  transition: box-shadow var(--transition), border var(--transition);
+}
+.plant-card button:hover, .plant-card button:focus {
+  background: #388e6c;
+  color: #fff;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 4px 16px 0 var(--color-glow);
+}
